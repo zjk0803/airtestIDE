@@ -4,24 +4,20 @@ __author__ = "admin"
 from airtest.core.api import *
 from airtest.cli.parser import cli_setup
 import time
+import os
 
 if not cli_setup():
     auto_setup(__file__, logdir=True, devices=["Windows:///198480",])
 while 1:
-    if exists(Template(r"tpl1614654495614.png", record_pos=(0.143, 0.107), resolution=(1646, 951))):
-        time.sleep(3)
+    try:
         touch(Template(r"tpl1614653862720.png", record_pos=(0.206, 0.106), resolution=(1646, 951)))
-        time.sleep(3)
+        time.sleep(3.5)
         touch(Template(r"tpl1614654292608.png", record_pos=(0.145, 0.108), resolution=(1646, 951)))
 
 
         time.sleep(5)
-    else:
-        break
-
-
-
-
+    except Exception:
+        pass
 # script content
 print("start...")
 
