@@ -1,0 +1,44 @@
+using UnityEngine;
+
+public class TestUI : MonoBehaviour
+{
+
+    private Rect windowRect = new Rect(Screen.width * 0.25f, 0, Screen.width / 2, Screen.height - 10);
+    public Vector2 scrollPosition = Vector2.zero;
+
+    void OnGUI()
+    {
+        windowRect = GUI.Window(0, windowRect, WindowFunction, "接口测试工具");
+    }
+
+    void WindowFunction(int windowID)
+    {
+
+        GUI.DragWindow(new Rect(0, 0, Screen.width / 2, 30));
+        GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
+
+        GUILayout.BeginArea(new Rect(5, 20, Screen.width / 2 - 20, Screen.height));
+        scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(Screen.width / 2 - 20), GUILayout.Height(Screen.height - 60));
+
+        // 在这里请求列表解析
+
+        GUILayout.EndScrollView();
+        GUILayout.BeginHorizontal();
+
+        if (GUILayout.Button("统计数量"))
+        {
+        }
+        if (GUILayout.Button("清空记录"))
+        {
+        }
+        if (GUILayout.Button("录制"))
+        {
+        }
+        if (GUILayout.Button("停止"))
+        {
+        }
+
+        GUILayout.EndHorizontal();
+        GUILayout.EndArea();
+    }
+}
